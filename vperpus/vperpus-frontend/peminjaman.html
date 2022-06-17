@@ -1,0 +1,133 @@
+<script>
+    if (localStorage.getItem("userToken") === null) {       
+        alert('Anda tidak punya token akses!');
+        window.location.href='index.html';
+    } 
+</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>vPerpus</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <header>
+      <!-- Fixed navbar --> 
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+        <a class="navbar-brand" href="#">
+          <img src="gambar/logo-vperpus.png" alt="..." height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="dashboard.html">Halaman Utama <span class="sr-only">(current)</span></a>
+            </li>
+            
+         
+            <li class="nav-item">
+              <a class="nav-link" href="buku.html">Katalog Buku</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="jurnal.html">Katalog Jurnal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="peminjaman.html">Alur Peminjaman</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="ganti-password.html">Ganti Password</a>
+              </li>
+           
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <button class="btn btn-success text-white my-2 my-sm-0" type="submit" onclick="destroyItem()">Logout</button>
+          </form>
+        </div>
+      </nav>
+      <nav class="navbar navbar-expand-md" style="background-image: url('gambar/cover-vperpus.jpg'); height: 400px; background-size: cover;">
+
+      </nav>
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container" style="margin-bottom: 100px">
+     
+    
+    <div class="clearfix content-heading" >
+      
+      <h2 class="pull-left">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-diagram-3" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M6 3.5A1.5 1.5 0 0 1 7.5 2h1A1.5 1.5 0 0 1 10 3.5v1A1.5 1.5 0 0 1 8.5 6v1H14a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0V8h-5v.5a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 2 7h5.5V6A1.5 1.5 0 0 1 6 4.5v-1zM8.5 5a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1zM0 11.5A1.5 1.5 0 0 1 1.5 10h1A1.5 1.5 0 0 1 4 11.5v1A1.5 1.5 0 0 1 2.5 14h-1A1.5 1.5 0 0 1 0 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5A1.5 1.5 0 0 1 7.5 10h1a1.5 1.5 0 0 1 1.5 1.5v1A1.5 1.5 0 0 1 8.5 14h-1A1.5 1.5 0 0 1 6 12.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1zm4.5.5a1.5 1.5 0 0 1 1.5-1.5h1a1.5 1.5 0 0 1 1.5 1.5v1a1.5 1.5 0 0 1-1.5 1.5h-1a1.5 1.5 0 0 1-1.5-1.5v-1zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 .5.5h1a.5.5 0 0 0 .5-.5v-1a.5.5 0 0 0-.5-.5h-1z"/>
+        </svg>
+        Alur Peminjaman
+      </h2>
+    
+    </div>
+
+
+                <div class="row mt-5">
+
+                        Buku dapat dipinjam dari perpustakaan kampus mana pun, tetapi kebijakan peminjaman di setiap perpustakaan mungkin berbeda. Untuk informasi tambahan mengenai kebijakan sirkulasi dan koleksi khusus di perpustakaan kampus tertentu, silakan hubungi perpustakaan terkait.
+                    <hr>
+                        Durasi peminjaman buku bervariasi dan tergantung pada buku dan status pengguna di universitas. Oleh karena itu, durasi peminjaman harus diperiksa untuk setiap buku secara individual. Informasi ini dapat ditemukan di katalog perpustakaan dengan masuk ke akun pengguna Anda. Jika ada perbedaan antara apa yang tercantum dalam katalog dan situasi sebenarnya, silakan berkonsultasi dengan pustakawan
+                    <hr>
+                    <br>
+
+                    <img width="750px" src="gambar/alur-pinjam.png"/>
+
+                    <hr>
+                    Setiap mahasiswa dan dosen bertanggung jawab untuk mengembalikan buku tepat waktu.
+
+                    Status buku yang dipinjam dapat dipantau melalui kartu pembaca di website perpustakaan.
+
+                    Penjelasan tentang kartu pembaca tersedia di situs web perpustakaan
+
+                    Setiap orang yang mengetahui sebelumnya bahwa mereka tidak akan dapat mengembalikan buku tepat waktu karena bepergian ke luar negeri, tugas cadangan, dll., harus mengembalikan buku ke perpustakaan sebelum ketidakhadirannya.
+
+                    Seorang dosen/peneliti yang sedang cuti di luar negeri wajib mengembalikan semua buku sebelum berangkat.
+
+                    Selama liburan semester / musim panas, perpustakaan beroperasi seperti biasa (kecuali untuk liburan satu minggu di musim panas, yang diumumkan sebelumnya). Buku-buku yang dipesan atau buku-buku yang masa peminjamannya telah habis (dan tidak dapat diberikan perpanjangan lagi) harus dikembalikan, meskipun tanggal pengembaliannya adalah pada Hari Raya.
+
+                    Merupakan tanggung jawab pembaca untuk memastikan bahwa semua informasi kontak mutakhir, termasuk alamat email, alamat tempat tinggal, dan nomor ponsel. 
+
+                    <br><br>
+                    <strong> Terima Kasih</strong> - <br>
+                    <cite>UPT-Perpustakaan</cite>
+
+
+    </div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Vulnerable Perpustakaan</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<script>
+    function destroyItem() {
+        localStorage.removeItem("userToken");
+        window.location.href='index.html';
+    }
+</script>
+

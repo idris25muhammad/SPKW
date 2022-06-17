@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>vPerpus</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+
+    <header>
+      <!-- Fixed navbar --> 
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+        <a class="navbar-brand" href="#">
+          <img src="gambar/logo-vperpus.png" alt="..." height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="dashboard.html">Halaman Utama <span class="sr-only">(current)</span></a>
+            </li>
+            
+         
+            <li class="nav-item">
+              <a class="nav-link" href="buku.html">Katalog Buku</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="jurnal.html">Katalog Jurnal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="peminjaman.html">Alur Peminjaman</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="ganti-password.html">Ganti Password</a>
+              </li>
+           
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <button class="btn btn-success text-white my-2 my-sm-0" type="submit" onclick="destroyItem()">Logout</button>
+          </form>
+        </div>
+      </nav>
+      <nav class="navbar navbar-expand-md" style="background-image: url('gambar/cover-vperpus.jpg'); height: 400px; background-size: cover;">
+
+      </nav>
+    </header>
+          <!-- Begin page content -->
+    <main role="main" class="container">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" 
+             role="status" id="loading">
+            <span class="sr-only">Data sedang dimuat..</span>
+        </div>
+    </div>
+      <h3>Katalog Riset</h3>
+      <div class="row mt-5">
+
+        <table class="table table-striped" id="risetData"></table>
+
+      </div>    
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Vulnerable Perpustakaan</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<script>
+// api url
+const api_url =
+	"/api/researches";
+
+// Defining async function
+async function getapi(url) {
+
+	// Storing response
+	const response = await fetch(url);
+	
+	// Storing data in form of JSON
+	var data = await response.json();
+	console.log(data);
+	if (response) {
+		hideloader();
+	}
+	show(data);
+}
+// Calling that async function
+getapi(api_url);
+
+// Function to hide the loader
+function hideloader() {
+	document.getElementById('loading').style.display = 'none';
+}
+// Function to define innerHTML for HTML table
+function show(data) {
+	let tab =
+		`<tr>
+		<th>Judul Riset</th>
+		<th>Tahun Publikasi</th>
+		<th>Action</th>
+		</tr>`;
+	
+	// Loop to access all rows
+	for (let r of data.result) {
+		tab += `<tr>
+  <td>${r.judul_penelitian}</td>
+	<td>${r.tahun}</td>
+	<td> 
+    <a class="btn btn-danger" href="${r.link_pdf}" role="button"> Download PDF </a> 
+    </td>		
+</tr>`;
+	}
+	// Setting innerHTML as tab variable
+	document.getElementById("risetData").innerHTML = tab;
+}
+
+</script>

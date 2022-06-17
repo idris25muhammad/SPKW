@@ -1,0 +1,170 @@
+<script>
+    if (localStorage.getItem("userToken") === null) {       
+        alert('Anda tidak punya token akses!');
+        window.location.href='index.html';
+    } 
+</script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>vPerpus</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/navbar.css" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <header>
+      <!-- Fixed navbar --> 
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-info">
+        <a class="navbar-brand" href="#">
+          <img src="gambar/logo-vperpus.png" alt="..." height="40">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="dashboard.html">Halaman Utama <span class="sr-only">(current)</span></a>
+            </li>
+            
+         
+            <li class="nav-item">
+              <a class="nav-link" href="buku.html">Katalog Buku</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="jurnal.html">Katalog Jurnal</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="peminjaman.html">Alur Peminjaman</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="ganti-password.html">Ganti Password</a>
+              </li>
+           
+          </ul>
+          <form class="form-inline mt-2 mt-md-0">
+            <button class="btn btn-success text-white my-2 my-sm-0" type="submit" onclick="destroyItem()">Logout</button>
+          </form>
+        </div>
+      </nav>
+    
+    </header>
+
+    <!-- Begin page content -->
+    <main role="main" class="container">
+      <div class="d-flex justify-content-center">
+        <div class="spinner-border" 
+             role="status" id="loading">
+            <span class="sr-only">Data sedang dimuat..</span>
+        </div>
+    </div>
+    
+        
+    <div class="row mt-5">
+      <div class="col-6 display-2 mt-2">
+            <strong class="text-danger"> Vulnerable </strong> Perpustakaan
+      </div>
+      <div class="col-6">
+        <img class="pull-right" width="540px" src="gambar/book-illustration.png">
+      </div>
+    </div>
+    
+    <div class="clearfix content-heading" >
+     
+      <h2 class="pull-left"> 
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-bar-chart-line" viewBox="0 0 16 16">
+        <path d="M11 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v12h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1v-3a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3h1V7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v7h1V2zm1 12h2V2h-2v12zm-3 0V7H7v7h2zm-5 0v-3H2v3h2z"/>
+      </svg>
+      Koleksi Terbaru</h2>
+
+    
+    </div>
+
+
+    <div class="row mt-5">
+      <table class="table table-striped" id="katalogBuku"></table>
+    </div>
+
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <span class="text-muted">Vulnerable Perpustakaan</span>
+      </div>
+    </footer>
+
+  </body>
+</html>
+
+<script>
+    function destroyItem() {
+        localStorage.removeItem("userToken");
+        window.location.href='index.html';
+    }
+</script>
+
+
+
+<script>
+
+  // api url
+  const api_url =
+    "/api/books?trend=publication_date&limit=15";
+  
+  // Defining async function
+  async function getapi(url) {
+  
+    // Storing response
+    const response = await fetch(url);
+    
+    // Storing data in form of JSON
+    var data = await response.json();
+    console.log(data);
+    if (response) {
+      hideloader();
+    }
+    show(data);
+  }
+  // Calling that async function
+  getapi(api_url);
+  
+  // Function to hide the loader
+  function hideloader() {
+    document.getElementById('loading').style.display = 'none';
+  }
+  // Function to define innerHTML for HTML table
+  function show(data) {
+
+
+    let tab='<div class="row justify-content-md-center">'
+    // Loop to access all rows
+    for (let r of data.result) {
+      tab += 
+        ` <div class="col-lg-3 bg-info ml-3 mb-3 mh-100"  style="background-image:url('gambar/whitebook.jpg')">
+          <h5 class="mt-3"> ${r.title} </h5> 
+          <small> Oleh : ${r.authors} </small>  
+          <hr>
+          <a href="detail-buku.html?bookID=${r.bookID}" class="btn btn-outline-danger btn-full mb-3"> Lihat Buku </a>
+          </div> 
+        `;
+    }
+    tab+= "</div>"
+    // Setting innerHTML as tab variable
+    document.getElementById("katalogBuku").innerHTML = tab;
+  }
+  
+  </script>

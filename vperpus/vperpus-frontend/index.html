@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body, html {
+  height: 100%;
+    background-size: cover;
+  
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* Add styles to the form container */
+.container {
+ background-image: url(./gambar/vperpus-unsplash.jpg);
+  margin: 0 auto;
+  max-width: 550px;
+  padding: 16px;
+  background-color: white;
+  min-height: 600px;
+}
+
+/* Full-width input fields */
+input[type=text], input[type=password] {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit button */
+.btn {
+  background-color: #12ccec;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.btn:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+
+<div>
+  
+  <h1 style="text-align: center; margin-top: 60px;" >
+      <img src="gambar/logo-vperpus.png" alt="vPerpus">
+  </h1>
+  <div class="container">
+    <h3 style="color: whitesmoke">Login</h3>
+
+    <label for="txtUsername" style="color: whitesmoke"><b>Email</b></label>
+    <input id="txtUsername" name="txtUsername"  type="text" placeholder="Enter Email" required>
+
+    <label for="txtPassword" style="color: whitesmoke"><b>Password</b></label>
+    <input id="txtPassword" name="txtPassword"  type="password" placeholder="Enter Password" required>
+
+    <button id="btnSubmit" type="submit" class="btn" type="button">Login</button>
+
+    <div style="margin-top: 25px;">
+      <small class="text-muted" style="color: whitesmoke">Belum punya akun??</small>
+    <a style="color: whitesmoke"   href="registrasi.html"> Registrasi disini </a>
+    </div>
+    
+  </div>
+</div>
+
+</body>
+</html>
+<script>
+
+  const form = {
+  username: document.querySelector("#txtUsername"),
+  password: document.querySelector("#txtPassword"),
+  submit: document.querySelector("#btnSubmit"),
+  };
+
+let button = form.submit.addEventListener("click", (e) => {
+  e.preventDefault();
+  const login = "/api/signin";
+
+  fetch(login, {
+    method: "POST",
+    headers: {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      username: form.username.value,
+      password: form.password.value,
+    }),
+  })
+    .then((response) => response.json())
+    .then((data) => {
+      console.log(data);
+      // code here //
+      if (data.success!=true) {
+        alert("Username atau Password Akun vPerpus Salah"); 
+        window.location= "index.html";
+        /*displays error message*/
+      } else {
+        localStorage.setItem('userToken',data.result.accessToken);
+        localStorage.setItem('userID',data.result.no_induk);
+
+        window.location = "dashboard.html";
+         /*opens the target page while Id & password matches*/
+      }
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+});
+
+</script>
