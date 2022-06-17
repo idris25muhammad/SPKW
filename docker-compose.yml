@@ -13,27 +13,21 @@ services:
       - "9000:80"
     volumes:
       - ./vulms-portal:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   vais-frontend:
     image: idris25muhammad/vulms-challenge-server
     restart: always
     volumes:
       - ./vais-master/vais-frontend:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   vperpus-frontend:
     image: idris25muhammad/vulms-challenge-server
     restart: always
     volumes:
       - ./vperpus/vperpus-frontend:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   challenge1:
     depends_on:
@@ -42,9 +36,7 @@ services:
     restart: always
     volumes:
       - ./vais-master/challenge1:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   challenge2:
     depends_on:
@@ -53,9 +45,7 @@ services:
     restart: always
     volumes:
       - ./vais-master/challenge2:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
     
   challenge3:
     depends_on:
@@ -64,9 +54,7 @@ services:
     restart: always
     volumes:
       - ./vais-master/challenge3:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
   
   challenge4:
     depends_on:
@@ -75,9 +63,7 @@ services:
     restart: always
     volumes:
       - ./vperpus/challenge4:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   challenge5:
     depends_on:
@@ -86,9 +72,7 @@ services:
     restart: always
     volumes:
       - ./vais-master/challenge5:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
       
   challenge6:
     depends_on:
@@ -97,9 +81,7 @@ services:
     restart: always
     volumes:
       - ./vperpus/challenge6:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   challenge7:
     depends_on:
@@ -108,9 +90,7 @@ services:
     restart: always
     volumes:
       - ./vperpus/challenge7:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   challenge8:
     depends_on:
@@ -119,9 +99,7 @@ services:
     restart: always
     volumes:
       - ./vperpus/challenge8:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
   
   challenge9:
     depends_on:
@@ -130,9 +108,7 @@ services:
     restart: always
     volumes:
       - ./vais-master/challenge9:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
   
   challenge10:
     depends_on:
@@ -141,9 +117,7 @@ services:
     restart: always
     volumes:
       - ./vperpus/challenge10:/var/www/html
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   # # PHPMyAdmin1
   # phpmyadmin-vulms:
@@ -196,9 +170,7 @@ services:
     restart: always
     volumes:
       - ./vulms-portal/dbimport:/docker-entrypoint-initdb.d
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   mysql-master-vais:
     image: mysql:5.7
@@ -208,9 +180,7 @@ services:
     volumes:
       - ./vais-master/dbimport:/docker-entrypoint-initdb.d
     restart: always
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   mysql-master-vperpus:
     image: mysql:5.7
@@ -220,9 +190,7 @@ services:
     volumes:
       - ./vperpus/dbimport:/docker-entrypoint-initdb.d
     restart: always
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   #NGINX API Gateway untuk VAIS
   vais:
@@ -232,9 +200,7 @@ services:
     ports:
       - "4040:8000"
     restart: always
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
 
   #NGINX API Gateway untuk vperpus
   vperpus:
@@ -244,9 +210,7 @@ services:
     ports:
       - "4041:8000"
     restart: always
-    mem_limit: 1G
-    mem_reservation: 1G
-    cpus: 2
+    
   
   webgoat8:
     image: webgoat/webgoat-8.0
