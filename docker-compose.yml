@@ -1,0 +1,267 @@
+# Version
+version: '3.1'
+
+# Setup
+services:
+
+  vulms-portal:
+    depends_on:
+      - mysql-master-vulms
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    ports:
+      - "9000:80"
+    volumes:
+      - ./vulms-portal:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  vais-frontend:
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vais-master/vais-frontend:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  vperpus-frontend:
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vperpus/vperpus-frontend:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  challenge1:
+    depends_on:
+      - mysql-master-vais
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vais-master/challenge1:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  challenge2:
+    depends_on:
+      - mysql-master-vais
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vais-master/challenge2:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+    
+  challenge3:
+    depends_on:
+      - mysql-master-vais
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vais-master/challenge3:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+  
+  challenge4:
+    depends_on:
+      - mysql-master-vperpus
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vperpus/challenge4:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  challenge5:
+    depends_on:
+      - mysql-master-vais
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vais-master/challenge5:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+      
+  challenge6:
+    depends_on:
+      - mysql-master-vperpus
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vperpus/challenge6:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  challenge7:
+    depends_on:
+      - mysql-master-vperpus
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vperpus/challenge7:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  challenge8:
+    depends_on:
+      - mysql-master-vperpus
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vperpus/challenge8:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+  
+  challenge9:
+    depends_on:
+      - mysql-master-vais
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vais-master/challenge9:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+  
+  challenge10:
+    depends_on:
+      - mysql-master-vperpus
+    image: idris25muhammad/vulms-challenge-server
+    restart: always
+    volumes:
+      - ./vperpus/challenge10:/var/www/html
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  # # PHPMyAdmin1
+  # phpmyadmin-vulms:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     - '8081:80'
+  #   restart: always
+  #   environment:
+  #     PMA_HOST: mysql-master-vulms
+  #   depends_on:
+  #     - mysql-master-vulms
+  #   mem_limit: 1G
+  #   mem_reservation: 1G
+  #   cpus: 2
+
+  # # PHPMyAdmin2
+  # phpmyadmin-vais:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     - '8082:80'
+  #   restart: always
+  #   environment:
+  #     PMA_HOST: mysql-master-vais
+  #   depends_on:
+  #     - mysql-master-vais
+  #   mem_limit: 1G
+  #   mem_reservation: 1G
+  #   cpus: 2
+
+  # #PHPMyAdmin4
+  # phpmyadmin-vperpus:
+  #   image: phpmyadmin/phpmyadmin
+  #   ports:
+  #     - '8083:80'
+  #   restart: always
+  #   environment:
+  #     PMA_HOST: mysql-master-vperpus
+  #   depends_on:
+  #     - mysql-master-vperpus
+  #   mem_limit: 1G
+  #   mem_reservation: 1G
+  #   cpus: 2
+
+  #Mysql SERVER
+  mysql-master-vulms:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=vulms-portal
+      - MYSQL_ROOT_PASSWORD=rahasia123
+    restart: always
+    volumes:
+      - ./vulms-portal/dbimport:/docker-entrypoint-initdb.d
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  mysql-master-vais:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=vais
+      - MYSQL_ROOT_PASSWORD=rahasia123
+    volumes:
+      - ./vais-master/dbimport:/docker-entrypoint-initdb.d
+    restart: always
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  mysql-master-vperpus:
+    image: mysql:5.7
+    environment:
+      - MYSQL_DATABASE=vperpus
+      - MYSQL_ROOT_PASSWORD=rahasia123
+    volumes:
+      - ./vperpus/dbimport:/docker-entrypoint-initdb.d
+    restart: always
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  #NGINX API Gateway untuk VAIS
+  vais:
+    image: nginx:latest
+    volumes:
+      - ./vais-master/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "4040:8000"
+    restart: always
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+
+  #NGINX API Gateway untuk vperpus
+  vperpus:
+    image: nginx:latest
+    volumes:
+      - ./vperpus/nginx.conf:/etc/nginx/nginx.conf:ro
+    ports:
+      - "4041:8000"
+    restart: always
+    mem_limit: 1G
+    mem_reservation: 1G
+    cpus: 2
+  
+  webgoat8:
+    image: webgoat/webgoat-8.0
+    ports:
+      - "9911:8080"
+    restart: always
+
+  multillidae2:
+    image: bltsec/mutillidae-docker
+    ports:
+      - "9912:80"
+    restart: always
+
+  dvwa:
+    image: mlinarik/dvwa
+    ports:
+      - "9913:80"
+    restart: always
