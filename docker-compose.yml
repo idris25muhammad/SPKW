@@ -10,7 +10,7 @@ services:
     image: idris25muhammad/vulms-challenge-server
     restart: always
     ports:
-      - "9000:80"
+      - "4000:80"
     volumes:
       - ./vulms-portal:/var/www/html
     
@@ -215,17 +215,17 @@ services:
   webgoat8:
     image: webgoat/webgoat-8.0
     ports:
-      - "9911:8080"
+      - "4042:8080"
     restart: always
 
   multillidae2:
     image: bltsec/mutillidae-docker
     ports:
-      - "9912:80"
+      - "4043:80"
     restart: always
 
   dvwa:
     image: mlinarik/dvwa
     ports:
-      - "9913:80"
+      - "4044:80"
     restart: always

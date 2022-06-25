@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql-master-vulms
--- Generation Time: Jun 17, 2022 at 05:13 PM
+-- Generation Time: Jun 18, 2022 at 08:20 AM
 -- Server version: 5.7.37
 -- PHP Version: 8.0.15
 
@@ -78,8 +78,7 @@ INSERT INTO `challenges` (`id`, `title`, `vulnapp_id`, `category_risk`, `objekti
 (7, 'Misconfigured directory permission', 1, 'API7:2019 Security Misconfiguration', 'Pada tantangan ini, flag dapat ditemukan pada file pdf yang berada pada server. API respon memberikan informasi link url suatu file multimedia, namun karena konfigurasi yang buruk dari file dan folder permission, seluruh file dan folder dapat diakses dengan mudah.', 'Kesalahan konfigurasi keamanan biasanya merupakan akibat dari konfigurasi default yang tidak aman, konfigurasi yang tidak lengkap atau ad-hoc, penyimpanan cloud terbuka, header HTTP yang salah konfigurasi, metode HTTP yang tidak perlu, berbagi sumber daya Cross-Origin (CORS) permisif, dan pesan kesalahan verbose yang berisi informasi sensitif.', 3, 'CVE-2020-29582', 'Untuk memulai pengujian, anda dapat menggunakan kredential sebagai mahasiswa Bob dengan username : bob@hotmail.com dan password : rahasia123', 'Burp Suite / OWASP ZAP', 'Jangan berikan hak akses penuh untuk semua file dan folder di server kepada user web ataupun anonymous user.', 'http://localhost:4041', 'e8774e7b117963fcae4759defda0864b'),
 (8, 'API SQL injection', 1, 'API8:2019 Injection', 'Pada tantangan ini, anda akan menemukan flag pada API endpoint yang vulnerable terhadap SQL injection. Ambil alih sistem database lalu lihat flag pada tabel dengan nama \"flag\". Selamat mencoba!', 'Security risk ini disebabkan oleh kerentanan terhadap injeksi, seperti SQL, NoSQL, Command Injection, dll., terjadi ketika data yang tidak dipercaya dikirim ke juru bahasa sebagai bagian dari perintah atau kueri. Data berbahaya penyerang dapat mengelabui penerjemah agar menjalankan perintah yang tidak diinginkan atau mengakses data tanpa otorisasi yang tepat.', 5, 'CVE-2022-29603', 'Untuk memulai pengujian, anda dapat menggunakan kredential sebagai mahasiswa Bob dengan username : bob@hotmail.com dan password : rahasia123', 'SQLMap', '- Selalu validasi dan sanitasi inputan dari konsumer <br> \r\n- Gunakan web application firewall untuk menghindari SQL injection. Untuk API, anda dapat menggunakan Wallarm API Firewall\r\n', 'http://localhost:4041', '6c0baf50647a69d5ef75df5f83d35fdb'),
 (9, 'Old version of lecturer\'s data', 1, 'API9:2019 Improper Assets Management', 'Pada tantangan ini, flag dapat ditemukan pada API endpoint versi 1 dari detail data dosen/lecturer. Selamat mencoba!', 'API cenderung mengekspos lebih banyak titik akhir daripada aplikasi web tradisional, membuat dokumentasi yang tepat dan diperbarui menjadi sangat penting. Host yang tepat dan inventaris versi API yang diterapkan juga memainkan peran penting untuk mengurangi masalah seperti versi API yang tidak digunakan lagi dan titik akhir debug yang terbuka.', 3, 'CVE-2021-39905', 'Untuk memulai pengujian, anda dapat menggunakan kredential sebagai mahasiswa Bob dengan username : 212121 dan password : bob123', 'Burp Suite / OWASP ZAP', 'Matikan versi endpoint yang tidak diperlukan dari produksi. Jika dua versi memang dibutuhkan untuk keperluan konsumer, pastikan semua versi dari API endpoint dengan tujuan yang sama memperoleh perlakukan yang sama dari sisi pengujian keamanan seperti monitoring, logging maupun vulnerability assesment', 'http://localhost:4040', 'e37ea288e5f33ab601b35970019b5666'),
-(10, 'Credential stuffing member login', 1, 'API10:2019 Insufficient Logging & Monitoring', 'Pada tantangan ini, karena tidak adanya logging autentikasi pada percobaan autentikasi yang salah, anda dapat melakukan eksploitasi dengan teknik credential stuffing  terhadap password dari user admin@spkapi.local. Selamat mencoba!. Sumber password untuk teknik credential stuffing ini dapat menggunakan password umum pada link berikut : https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000.txt', 'Pencatatan dan pemantauan yang tidak memadai, ditambah dengan integrasi yang hilang atau tidak efektif dengan respons insiden, memungkinkan penyerang menyerang sistem lebih lanjut, mempertahankan kegigihan, beralih ke lebih banyak sistem untuk mengutak-atik, mengekstrak, atau menghancurkan data. Sebagian besar studi pelanggaran menunjukkan waktu untuk mendeteksi pelanggaran lebih dari 200 hari, biasanya dideteksi oleh pihak eksternal daripada proses atau pemantauan internal.', 4, 'CVE-2022-24044', 'username : alice@gmail.com', 'FFUF / Burp Suite / OWASP ZAP', '- Catat setiap upaya yang gagal, akses yang ditolak, kegagalan validasi input, dll. <br>\r\n- Sediakan format yang sesuai standar untuk menyimpan log dengan aman. <br>\r\n- Gunakan aplikasi monitoring seperti Grafana terhadap masing-masing API server / API gateway untuk memantau trafik yang mencurigakan\r\n', 'http://localhost:4041', '619ff4193bffc4858ebb7b70af4edfc5'),
-(11, 'Lakukan serangan SQL injection pada DVWA mode low untuk mendapatkan flag!', 2, 'A1 : Injection', 'Lakukan serangan SQL injection pada DVWA mode low untuk mendapatkan flag!', 'Lakukan serangan SQL injection pada DVWA mode low untuk mendapatkan flag!', 4, '', 'user : admin, password : password', 'Gunakan aplikasi FFUF untuk melakukan fuzzing password dari user target. Pada parameter wordlist, anda dapat menggunakan daftar password umum dari URL berikut ini : <br>\r\n\r\n<a href=\"https://github.com/danielmiessler/SecLists/blob/master/Passwords/xato-net-10-million-passwords-10000.txt\"> 10 ribu password umum wordlist</a>', 'Lakukan input validasi dan sanitasi', 'http://localhost:4043', 'fdklsjfkldsjfkljljklj342432');
+(10, 'Credential stuffing member login', 1, 'API10:2019 Insufficient Logging & Monitoring', 'Pada tantangan ini, karena tidak adanya logging autentikasi pada percobaan autentikasi yang salah, anda dapat melakukan eksploitasi dengan teknik credential stuffing  terhadap password dari user admin@spkapi.local. Selamat mencoba!. Sumber password untuk teknik credential stuffing ini dapat menggunakan password umum pada link berikut : https://github.com/danielmiessler/SecLists/blob/master/Passwords/Common-Credentials/10-million-password-list-top-1000.txt', 'Pencatatan dan pemantauan yang tidak memadai, ditambah dengan integrasi yang hilang atau tidak efektif dengan respons insiden, memungkinkan penyerang menyerang sistem lebih lanjut, mempertahankan kegigihan, beralih ke lebih banyak sistem untuk mengutak-atik, mengekstrak, atau menghancurkan data. Sebagian besar studi pelanggaran menunjukkan waktu untuk mendeteksi pelanggaran lebih dari 200 hari, biasanya dideteksi oleh pihak eksternal daripada proses atau pemantauan internal.', 4, 'CVE-2022-24044', 'username : alice@gmail.com', 'FFUF / Burp Suite / OWASP ZAP', '- Catat setiap upaya yang gagal, akses yang ditolak, kegagalan validasi input, dll. <br>\r\n- Sediakan format yang sesuai standar untuk menyimpan log dengan aman. <br>\r\n- Gunakan aplikasi monitoring seperti Grafana terhadap masing-masing API server / API gateway untuk memantau trafik yang mencurigakan\r\n', 'http://localhost:4041', '619ff4193bffc4858ebb7b70af4edfc5');
 
 -- --------------------------------------------------------
 
@@ -183,8 +182,7 @@ INSERT INTO `pentests` (`id`, `challenge_id`, `user_id`, `status`, `point`, `cre
 (48, 7, 4, 0, 50, '2022-05-30 02:43:02', '2022-05-30 02:43:02'),
 (49, 8, 4, 1, 100, '2022-05-30 02:43:02', '2022-05-30 02:43:02'),
 (50, 9, 4, 0, 50, '2022-05-30 02:43:02', '2022-05-30 02:43:02'),
-(51, 10, 4, 0, 75, '2022-05-30 02:43:02', '2022-05-30 02:43:02'),
-(53, 11, 2, 0, 75, '2022-06-16 11:25:24', '2022-06-16 11:25:24');
+(51, 10, 4, 0, 75, '2022-05-30 02:43:02', '2022-05-30 02:43:02');
 
 -- --------------------------------------------------------
 
@@ -241,6 +239,8 @@ CREATE TABLE `vulnapps` (
   `id` int(10) UNSIGNED NOT NULL,
   `app_name` varchar(255) NOT NULL,
   `description` text NOT NULL,
+  `gamified` tinyint(4) NOT NULL DEFAULT '0',
+  `link` varchar(255) DEFAULT NULL,
   `status` tinyint(4) NOT NULL DEFAULT '1',
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -250,9 +250,11 @@ CREATE TABLE `vulnapps` (
 -- Dumping data for table `vulnapps`
 --
 
-INSERT INTO `vulnapps` (`id`, `app_name`, `description`, `status`, `created_at`, `updated_at`) VALUES
-(1, 'VPWA', 'VPWA merupakan singkatan dari Vulnerable Polytechnic Web Application. Mari mengenal dan mempelajari fundamental risiko keamanan API berdasarkan Top 10 OWASP API Security Project di Tahun 2019. VPWA terdiri dari 2 aplikasi utama yaitu VAIS (Vulnerable Academic Information System) dan vPerpus (Vulnerable perpustakaan)', 1, NULL, NULL),
-(2, 'DVWA-LOW', 'Pelajari kerentanan web melalui DVWA mode LOW', 1, NULL, NULL);
+INSERT INTO `vulnapps` (`id`, `app_name`, `description`, `gamified`, `link`, `status`, `created_at`, `updated_at`) VALUES
+(1, 'SPKAPI', 'SPKAPI merupakan singkatan dari sistem pembelajaran keamanan API. Mari mengenal dan mempelajari fundamental risiko keamanan API berdasarkan Top 10 OWASP API Security Project di Tahun 2019. VPWA terdiri dari 2 aplikasi utama yaitu VAIS (Vulnerable Academic Information System) dan vPerpus (Vulnerable perpustakaan)', 1, NULL, 1, NULL, NULL),
+(2, 'DVWA', 'Damn Vulnerable Web Application (DVWA) adalah aplikasi web PHP/MySQL yang sangat rentan. Tujuan utamanya adalah untuk membantu profesional keamanan menguji keterampilan dan alat mereka dalam lingkungan hukum, untuk membantu pengembang web untuk lebih memahami proses keamanan aplikasi web, dan untuk membantu guru/siswa mengajar/mempelajari aplikasi web di kelas pengaturan program keamanan.', 0, 'http://localhost:4044', 1, NULL, NULL),
+(3, 'Mutillidae II', 'OWASP Mutillidae II adalah aplikasi web gratis, open source yang menyediakan target untuk penggemar keamanan siber  yang dirancang untuk lab, penggemar keamanan, ruang kelas, CTF, dan target alat penilaian kerentanan.', 0, 'http://localhost:4043/mutillidae', 1, NULL, NULL),
+(4, 'WebGoat', 'WebGoat adalah aplikasi yang sengaja dibuat tidak aman yang memungkinkan pengembang yang tertarik seperti Anda untuk menguji kerentanan umum dalam aplikasi berbasis Java yang menggunakan komponen open source yang umum dan populer. Versi yang digunakan pada aplikasi pembelajaran ini adalah WebGoat 8.', 0, 'http://localhost:4042/WebGoat', 1, NULL, NULL);
 
 --
 -- Indexes for dumped tables
@@ -371,7 +373,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `vulnapps`
 --
 ALTER TABLE `vulnapps`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Constraints for dumped tables

@@ -12,7 +12,7 @@
                         {{ __('Leaderboards') }} 
                         </span> 
             </h2>
-            Berikut perolehan poin tertinggi untuk seluruh tantangan di semua aplikasi vulnerable :
+            Berikut perolehan poin tertinggi untuk seluruh tantangan di semua aplikasi rentan :
         </div>
     </div>
     <div class="page-body">

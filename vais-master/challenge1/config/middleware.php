@@ -19,24 +19,24 @@ return function (App $app)
     $app->addRoutingMiddleware();
     $app->add(new TrailingSlash());
     
-    // $app->add(
-    //     new \Tuupola\Middleware\JwtAuthentication([
-    //         "path" => ["/api/v2"],
-    //         "algorithm" => ["HS256", "RS256","HS384"],
-    //         "secret"=> SecretKeyInterface::JWT_HS256_SECRET_KEY,
-    //         "secure"=>false,
-    //         "attribute" => "jwt",
-    //         "error"=> function($response,$arguments)
-    //         {
-    //             $data["success"] = false;
-    //             $data["response"]= $arguments["message"];
-    //             $data["status_code"]= "401";
+    $app->add(
+        new \Tuupola\Middleware\JwtAuthentication([
+            "path" => ["/api/v2"],
+            "algorithm" => ["HS256", "RS256","HS384"],
+            "secret"=> SecretKeyInterface::JWT_HS256_SECRET_KEY,
+            "secure"=>false,
+            "attribute" => "jwt",
+            "error"=> function($response,$arguments)
+            {
+                $data["success"] = false;
+                $data["response"]= $arguments["message"];
+                $data["status_code"]= "401";
   
-    //             return $response->withHeader("Content-type","application/json")
-    //                 ->getBody()->write(json_encode($data,JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ));
-    //         }
-    //     ])
-    // );
+                return $response->withHeader("Content-type","application/json")
+                    ->getBody()->write(json_encode($data,JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT ));
+            }
+        ])
+    );
     
     $app->addErrorMiddleware(true,true,true);
 };
